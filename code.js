@@ -18,6 +18,7 @@ var person = /** @class */ (function () {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        person.count++;
     }
     Object.defineProperty(person.prototype, "get_name", {
         get: function () {
@@ -64,6 +65,10 @@ var person = /** @class */ (function () {
     person.prototype.show = function () {
         return "Name: ".concat(this.name, ", age: ").concat(this.age);
     };
+    person.dem = function () {
+        return "\nHave ".concat(person.count, " people.");
+    };
+    person.count = 0;
     return person;
 }());
 var employee = /** @class */ (function (_super) {
@@ -79,5 +84,8 @@ var employee = /** @class */ (function (_super) {
     };
     return employee;
 }(person));
+var Long = new person('Long', 21, true);
+var Phong = new person('Phong', 22, true);
+var Trang = new person('Trang', 21, false);
 var new_em = new employee('Nam', 22, true, 'dev');
-console.log(new_em.show());
+console.log(person.dem());

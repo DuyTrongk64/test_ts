@@ -1,22 +1,31 @@
 class person{
     private name: string;
+    
+    private age: number;
+
+    private gender: boolean;
+
+    private static count =0;
     public get get_name(): string {
         return this.name;
     }
+
     public set set_name(value: string) {
         this.name = value;
     }
-    private age: number;
+
     public get get_get_age(): number {
         return this.age;
     }
+
     public set set_age(value: number) {
         this.age = value;
     }
-    private gender: boolean;
+
     public get get_gender(): boolean {
         return this.gender;
     }
+
     public set set_gender(value: boolean) {
         this.gender = value;
     }
@@ -25,10 +34,15 @@ class person{
         this.name = name;
         this.age = age;
         this.gender = gender;
+        person.count++;
     }
 
     public show(){
         return `Name: ${this.name}, age: ${this.age}`;
+    }
+
+    public static dem(){
+        return `\nHave ${person.count} people.`;
     }
 }
 
@@ -46,6 +60,10 @@ class employee extends person{
         return super.show() + ` job: ${this.job}`;
     }
 }
-
+let Long = new person('Long',21,true);
+let Phong = new person('Phong',22,true);
+let Trang = new person('Trang',21,false);
 let new_em = new employee('Nam',22,true,'dev');
-console.log(new_em.show());
+
+console.log(person.dem());
+
